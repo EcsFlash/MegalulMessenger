@@ -1,0 +1,83 @@
+package com.nif.nif.megalulmessenger
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Create
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.tooling.preview.Preview
+import com.nif.nif.megalulmessenger.ui.theme.MegalulMessengerTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MegalulMessengerTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Greeting("Android")
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+               colors = TopAppBarDefaults.smallTopAppBarColors(
+                   containerColor = MaterialTheme.colorScheme.primaryContainer,
+                   titleContentColor = MaterialTheme.colorScheme.primary,
+               ),
+                title = {
+                    Text("МЕГАЛЮЛЬ-ЭКСПРЕСС")
+                }
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { println("click!!!!!!") },
+
+            ) {
+                Icon(Icons.Filled.Create, "Floating action button.")
+            }
+        }
+    ) {innerPadding ->
+        Text(
+            modifier = Modifier.padding(innerPadding),
+            text = ""
+        )
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    MegalulMessengerTheme {
+        Greeting("Android")
+    }
+}
